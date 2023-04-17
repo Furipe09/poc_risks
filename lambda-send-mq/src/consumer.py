@@ -1,5 +1,6 @@
 import ssl
 import pika
+import os
 
 class BasicPikaClient:
 
@@ -15,7 +16,7 @@ class BasicPikaClient:
 
         self.connection = pika.BlockingConnection(parameters)
         self.channel = self.connection.channel()
-        
+
 
 class BasicMessageSender(BasicPikaClient):
 
@@ -28,28 +29,36 @@ class BasicMessageSender(BasicPikaClient):
         channel.basic_publish(exchange=exchange,
                               routing_key=routing_key,
                               body=body)
-        print(f"Sent message. Exchange: {exchange}, Routing Key: {routing_key}, Body: {body}")
+        print(
+            f"Sent message. Exchange: {exchange}, Routing Key: {routing_key}, Body: {body}")
 
     def close(self):
         self.channel.close()
         self.connection.close()
 
+
 if __name__ == "__main__":
 
     # Initialize Basic Message Sender which creates a connection
     # and channel for sending messages.
+    brokerid = os.environ.get('brokerid')
+    username = os.environ.get('username')
+    password = os.environ.get('password')
+    region = os.environ.get('region')
+
     basic_message_sender = BasicMessageSender(
-        "b-0ac363c4-4d24-4ba0-87eb-bfd963df092a",
-        "ExampleUserbora",
-        "MindTheGapqueseja",
-        "us-east1"
+        brokerid,
+        username,
+        password,
+        region
     )
 
     # Declare a queue
     basic_message_sender.declare_queue("hello world queue")
 
     # Send a message to the queue.
-    basic_message_sender.send_message(exchange="", routing_key="hello world queue", body=b'Hello World Furion!')
+    basic_message_sender.send_message(
+        exchange="", routing_key="hello world queue", body=b'Hello World Furion!')
 
     # Close connections.
     basic_message_sender.close()

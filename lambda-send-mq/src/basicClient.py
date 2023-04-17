@@ -1,6 +1,7 @@
 import ssl
 import pika
 
+
 class BasicPikaClient:
 
     def __init__(self, rabbitmq_broker_id, rabbitmq_user, rabbitmq_password, region):

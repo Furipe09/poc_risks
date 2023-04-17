@@ -12,7 +12,7 @@ data "aws_region" "current" {}
 
 data "archive_file" "lambda_zip_file" {
   type        = "zip"
-  source_file = "${path.module}/src/app.py"
+  source_file = ".${path.module}/src/app.py"
   output_path = "${path.module}/lambda.zip"
 }
 

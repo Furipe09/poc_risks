@@ -2,7 +2,7 @@ resource "aws_mq_configuration" "mq_config" {
   count          = var.create_mq ? 1 : 0
   description    = var.mq_conf_description
   name           = var.mq_conf_name
-  engine_type    = var.mq_host_instance_type
+  engine_type    = var.mq_conf_engine_type
   engine_version = var.mq_conf_engine_version
 
   data = <<DATA
@@ -17,7 +17,7 @@ resource "aws_mq_configuration" "mq_config" {
 DATA
 }
 
-resource "aws_mq_broker" "oneracao" {
+resource "aws_mq_broker" "one" {
   count       = var.create_mq ? 1 : 0
   broker_name = var.mq_broker_name
 
@@ -26,7 +26,7 @@ resource "aws_mq_broker" "oneracao" {
     revision = aws_mq_configuration.mq_config[0].latest_revision
   }
 
-  engine_type        = var.mq_host_instance_type
+  engine_type        = var.mq_conf_engine_type
   engine_version     = var.mq_conf_engine_version
   host_instance_type = var.mq_host_instance_type
   security_groups    = [aws_security_group.allow_tls.id]
