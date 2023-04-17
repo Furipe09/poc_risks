@@ -5,14 +5,17 @@ import logging
 
 logging.basicConfig(level=logging.INFO)
 
+
 class DynamoDB:
     def __init__(self, table_name):
         self.dynamodb = boto3.resource('dynamodb')
         self.table = self.dynamodb.Table(table_name)
-        logging.info(f"## Tabela da variável environment DDB_TABLE: {table_name}")
+        logging.info(
+            f"## Tabela da variável environment DDB_TABLE: {table_name}")
 
     def put_item(self, item):
         self.table.put_item(Item=item)
+
 
 class LambdaFunction:
     def __init__(self, table_name):
@@ -21,7 +24,7 @@ class LambdaFunction:
     def handle_request(self, event, context):
         for record in event['Records']:
             logging.info(f"## Registro: {record}")
-            
+
             if record["body"]:
                 payload = json.loads(record["body"])
                 logging.info(f"## Payload Recebido: {payload}")
@@ -45,6 +48,7 @@ class LambdaFunction:
                     },
                     "body": json.dumps({"message": message})
                 }
+
 
 def lambda_handler(event, context):
     tableName = os.environ.get('DDB_TABLE')
