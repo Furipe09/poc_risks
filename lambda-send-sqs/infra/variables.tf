@@ -1,5 +1,29 @@
 variable "SQSqueueUrl" {
   description = ""
   type        = string
-  default     = "https://sqs.us-east-1.amazonaws.com/222497770433/sqs-lambda-Risk"
+  default     = ""
+}
+
+# variable "brokerid" {
+#   description = ""
+#   type        = string
+#   default     = ""
+# }
+
+# variable "username" {
+#   description = ""
+#   type        = string
+#   default     = ""
+# }
+
+# variable "password" {
+#   description = ""
+#   type        = string
+#   default     = ""
+# }
+
+variable "region" {
+  description = ""
+  type        = string
+  default     = ""
 }

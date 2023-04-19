@@ -1,58 +1,58 @@
 ############################ MQ ##
 
-variable "create_mq" {
-  description = ""
-  type        = bool
-  default     = false
-}
+# variable "create_mq" {
+#   description = ""
+#   type        = bool
+#   default     = false
+# }
 
-variable "mq_conf_description" {
-  description = ""
-  type        = string
-  default     = "oneracao Configuration"
-}
+# variable "mq_conf_description" {
+#   description = ""
+#   type        = string
+#   default     = "oneracao Configuration"
+# }
 
-variable "mq_conf_name" {
-  description = ""
-  type        = string
-  default     = "oneracao"
-}
+# variable "mq_conf_name" {
+#   description = ""
+#   type        = string
+#   default     = "oneracao"
+# }
 
-variable "mq_conf_engine_type" {
-  description = ""
-  type        = string
-  default     = "ActiveMQ"
-}
+# variable "mq_conf_engine_type" {
+#   description = ""
+#   type        = string
+#   default     = "ActiveMQ"
+# }
 
-variable "mq_conf_engine_version" {
-  description = ""
-  type        = string
-  default     = "5.15.0"
-}
+# variable "mq_conf_engine_version" {
+#   description = ""
+#   type        = string
+#   default     = "5.15.0"
+# }
 
-variable "mq_broker_name" {
-  description = ""
-  type        = string
-  default     = "oneracao"
-}
+# variable "mq_broker_name" {
+#   description = ""
+#   type        = string
+#   default     = "oneracao"
+# }
 
-variable "mq_host_instance_type" {
-  description = ""
-  type        = string
-  default     = "mq.t2.micro"
-}
+# variable "mq_host_instance_type" {
+#   description = ""
+#   type        = string
+#   default     = "mq.t2.micro"
+# }
 
-variable "mq_username" {
-  description = ""
-  type        = string
-  default     = "oneracaoUserbora"
-}
+# variable "mq_username" {
+#   description = ""
+#   type        = string
+#   default     = ""
+# }
 
-variable "mq_password" {
-  description = ""
-  type        = string
-  default     = "MindTheGapqueseja"
-}
+# variable "mq_password" {
+#   description = ""
+#   type        = string
+#   default     = ""
+# }
 
 ########################### SQS ##
 
@@ -94,38 +94,51 @@ variable "range_key" {
   default     = "IdCliente"
 }
 
-variable "IdProduto" {
-  description = "Codigo do produto"
-  type        = string
-  default     = "IdProduto"
-}
+# variable "IdProduto" {
+#   description = "Codigo do produto"
+#   type        = string
+#   default     = "IdProduto"
+# }
 
-variable "IdPropostaProduto" {
-  description = "Codigo da proposta do produto"
-  type        = string
-  default     = "IdPropostaProduto"
-}
+# variable "IdPropostaProduto" {
+#   description = "Codigo da proposta do produto"
+#   type        = string
+#   default     = "IdPropostaProduto"
+# }
 
-variable "ValorRisco" {
-  description = "Codigo da proposta do produto"
-  type        = string
-  default     = "ValorRisco"
-}
+# variable "ValorRisco" {
+#   description = "Codigo da proposta do produto"
+#   type        = string
+#   default     = "ValorRisco"
+# }
 
-variable "ValorParcela" {
-  description = "Codigo da proposta do produto"
-  type        = string
-  default     = "ValorParcela"
-}
+# variable "ValorParcela" {
+#   description = "Codigo da proposta do produto"
+#   type        = string
+#   default     = "ValorParcela"
+# }
 
-variable "PrazoContrato" {
-  description = "Codigo da proposta do produto"
-  type        = string
-  default     = "PrazoContrato"
-}
+# variable "PrazoContrato" {
+#   description = "Codigo da proposta do produto"
+#   type        = string
+#   default     = "PrazoContrato"
+# }
 
-variable "ValidadeProposta" {
-  description = "Codigo da proposta do produto"
-  type        = string
-  default     = "ValidadeProposta"
-}
+# variable "ValidadeProposta" {
+#   description = "Codigo da proposta do produto"
+#   type        = string
+#   default     = "ValidadeProposta"
+# }
+
+
+# variable "broker_engine_type" {
+#   description = ""
+#   type        = string
+#   default     = ""
+# }
+
+# variable "broker_engine_version" {
+#   description = ""
+#   type        = string
+#   default     = ""
+# }

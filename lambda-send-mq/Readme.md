@@ -1,1 +1,0 @@
-https://docs.aws.amazon.com/pt_br/amazon-mq/latest/developer-guide/amazon-mq-rabbitmq-pika.html

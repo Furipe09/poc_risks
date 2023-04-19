@@ -12,7 +12,7 @@ data "aws_region" "current" {}
 
 data "archive_file" "lambda_zip_file" {
   type        = "zip"
-  source_file = ".${path.module}/src/app.py"
+  source_dir  = ".${path.module}/app"
   output_path = "${path.module}/lambda.zip"
 }
 
@@ -93,7 +93,7 @@ resource "aws_lambda_function" "sqs_lambda_dynamodb_function" {
   filename         = data.archive_file.lambda_zip_file.output_path
   source_code_hash = filebase64sha256(data.archive_file.lambda_zip_file.output_path)
   role             = aws_iam_role.sqs_lambda_dynamodb_functionrole.arn
-  handler          = "app.lambda_handler"
+  handler          = "lambda_function.lambda_handler"
   runtime          = "python3.9"
   layers           = ["arn:aws:lambda:${data.aws_region.current.name}:017000801446:layer:AWSLambdaPowertoolsPython:13"]
   environment {
