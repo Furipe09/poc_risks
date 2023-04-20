@@ -1,4 +1,4 @@
-# POC de Gestão de Riscos
+# Risks POC
 
 ## Essa POC tem como objetivo:
 - Enviar mensagens SQS de uma lambda, 

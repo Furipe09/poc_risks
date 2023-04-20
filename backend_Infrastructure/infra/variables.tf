@@ -9,13 +9,13 @@
 # variable "mq_conf_description" {
 #   description = ""
 #   type        = string
-#   default     = "oneracao Configuration"
+#   default     = "risk Configuration"
 # }
 
 # variable "mq_conf_name" {
 #   description = ""
 #   type        = string
-#   default     = "oneracao"
+#   default     = "risk"
 # }
 
 # variable "mq_conf_engine_type" {
@@ -33,7 +33,7 @@
 # variable "mq_broker_name" {
 #   description = ""
 #   type        = string
-#   default     = "oneracao"
+#   default     = "risk"
 # }
 
 # variable "mq_host_instance_type" {

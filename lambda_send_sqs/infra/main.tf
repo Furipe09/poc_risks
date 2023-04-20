@@ -7,11 +7,11 @@ resource "aws_lambda_function" "lambda_function" {
   function_name    = "LambdaToSQS"
   filename         = data.archive_file.lambda_zip_file.output_path
   source_code_hash = data.archive_file.lambda_zip_file.output_base64sha256
-  handler          = "lambda_function.lambda_handler"
+  handler          = "lambda_function.call_handler"
   role             = aws_iam_role.lambda_iam_role.arn
   runtime          = "python3.9"
   # https://awslabs.github.io/aws-lambda-powertools-python/2.13.0/#local-development
-  layers = ["arn:aws:lambda:us-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV2:28", ]
+  # layers = ["arn:aws:lambda:us-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV2:28", ]
   environment {
     variables = {
       SQSqueueUrl = var.SQSqueueUrl
@@ -21,7 +21,7 @@ resource "aws_lambda_function" "lambda_function" {
 
 data "archive_file" "lambda_zip_file" {
   type        = "zip"
-  source_dir  = ".${path.module}/app"
+  source_dir  = ".${path.module}/src"
   output_path = "${path.module}/lambda.zip"
 }
 
