@@ -1,65 +1,9 @@
-############################ MQ ##
-
-# variable "create_mq" {
-#   description = ""
-#   type        = bool
-#   default     = false
-# }
-
-# variable "mq_conf_description" {
-#   description = ""
-#   type        = string
-#   default     = "risk Configuration"
-# }
-
-# variable "mq_conf_name" {
-#   description = ""
-#   type        = string
-#   default     = "risk"
-# }
-
-# variable "mq_conf_engine_type" {
-#   description = ""
-#   type        = string
-#   default     = "ActiveMQ"
-# }
-
-# variable "mq_conf_engine_version" {
-#   description = ""
-#   type        = string
-#   default     = "5.15.0"
-# }
-
-# variable "mq_broker_name" {
-#   description = ""
-#   type        = string
-#   default     = "risk"
-# }
-
-# variable "mq_host_instance_type" {
-#   description = ""
-#   type        = string
-#   default     = "mq.t2.micro"
-# }
-
-# variable "mq_username" {
-#   description = ""
-#   type        = string
-#   default     = ""
-# }
-
-# variable "mq_password" {
-#   description = ""
-#   type        = string
-#   default     = ""
-# }
-
 ########################### SQS ##
 
 variable "create_sqs" {
   description = ""
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "sqs_lambda" {
@@ -73,7 +17,7 @@ variable "sqs_lambda" {
 variable "create_dynamodb" {
   description = ""
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "dynamodb_table" {
@@ -96,21 +40,24 @@ variable "range_key" {
 variable "dynamodb_billing_mode" {
   description = ""
   type        = string
+  default = "PROVISIONED"
 }
 
 variable "dynamodb_read_capacity" {
   description = ""
   type        = string
+  default = 20
 }
 
 variable "dynamodb_write_capacity" {
   description = ""
+  default = 20
 }
 
 variable "tags" {
   description = ""
   type        = map
-  default     = {}
+  default     = { "project" = "risk" }
 }
 
 # variable "IdProduto" {
