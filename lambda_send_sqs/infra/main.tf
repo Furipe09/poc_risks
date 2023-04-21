@@ -14,7 +14,7 @@ resource "aws_lambda_function" "lambda_function" {
   # layers = ["arn:aws:lambda:us-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV2:28", ]
   environment {
     variables = {
-      SQSqueueUrl = var.SQSqueueUrl
+      SQSqueueUrl = "https://sqs.us-east-1.amazonaws.com/${data.aws_caller_identity.current.account_id}/${var.SQSqueueUrl}" # var.SQSqueueUrl
     }
   }
 }

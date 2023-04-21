@@ -8,7 +8,7 @@ resource "aws_cloudwatch_log_group" "sqs_lambda_dynamodb_loggroup" {
 }
 
 resource "aws_lambda_event_source_mapping" "sqs_lambda_demo_sourcemapping" {
-  event_source_arn = var.SQSqueueArn
+  event_source_arn =  "arn:aws:sqs:us-east-1:${data.aws_caller_identity.current.account_id}:${var.SQSqueueArn}"#var.SQSqueueArn
   function_name    = var.function_name
   depends_on = [
     aws_lambda_function.sqs_lambda_dynamodb_function
