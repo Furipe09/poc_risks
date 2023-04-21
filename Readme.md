@@ -38,14 +38,14 @@ Aqui segue o [video](https://www.loom.com/share/c13ecb64b720423b983029482789cabe
     cd poc_risks
     ```
 
-3. Opcional - Caso ache necessario, as variaveis de entradas de um dos 3 repositórios do terraform, altere nos arquivos abaixo:
+3. **Opcional** - Caso ache necessario, altere os valores das variaveis de entradas dos 3 repositórios do terraform, conforme arquivos abaixo:
    - poc_risks/backend_infrastructure/infra/variables.tf
    - poc_risks/lambda_send_sqs/infra/variables.tf
    - poc_risks/lambda_sqs_dynamodb/infra/variables.tf
 
 4. Na linha de comando, use o Terraform para implantar os recursos da AWS:
 
-    - Implantação dos recursos de infraestrutura - SQS e DynamoDB:
+    - Implantação dos recursos de infraestrutura - **SQS e DynamoDB**:
 
     ```bash
     terraform -chdir=backend_Infrastructure/infra init
@@ -53,7 +53,7 @@ Aqui segue o [video](https://www.loom.com/share/c13ecb64b720423b983029482789cabe
     terraform -chdir=backend_Infrastructure/infra apply -auto-approve
     ```
 
-    - Implantação da lambda de envio de msgs ao SQS - Lambda:
+    - Implantação da lambda de envio de msgs ao **SQS - Lambda**:
 
     ```bash
     terraform -chdir=lambda_send_sqs/infra init
@@ -61,7 +61,7 @@ Aqui segue o [video](https://www.loom.com/share/c13ecb64b720423b983029482789cabe
     terraform -chdir=lambda_send_sqs/infra apply -auto-approve
     ```
 
-    - Implantação do service map e da lambda de recepção de msgs do SQS e envio ao DynamoDB - Lambda e service map:
+    - Implantação do service map e da lambda de recepção de msgs do SQS e envio ao DynamoDB - **Lambda e service map**:
 
     ```bash
     terraform -chdir=lambda_sqs_dynamodb/infra init
