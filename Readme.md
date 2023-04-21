@@ -1,18 +1,80 @@
 # Risks POC
 
-## Essa POC tem como objetivo:
-- Enviar mensagens SQS de uma lambda, 
-- Recepcionar mensagem do SQS em outra Lambda e gravar na tabela DynamoDB
+## Este projeto tem como objetivo a validação de uma POC que deve
 
-### Os recursos de Infra abaixo foram criados no diretório 'backend-Infrastructure':
-- DynamoDB Table
-- SQS Queue
+- Enviar mensagens a uma fila SQS atravé de uma lambda;
 
-- Lambda - Envia mensagem ao SQS foi criada no diretório 'lambda-send-sqs'
+- Fazer o trigger de outra lambda toda as vezes que a fila sqs receber msgs novas;
+  
+- Capturar as mensagem de uma fila SQS em uma Lambda e grava em uma tabela DynamoDB;
 
- - Lambda - Escuta e recebe as mensagem do SQS e grava no DynamoDB está no diretório 'lambda-sqs-dynamodb'
+### Os recursos de Infra abaixo serão criados
 
-## Para executar essa POC:
-1. Executar o passo a passo do backen-Infrastructure/README.md
-2. Executar o passo a passo do lambda-send-sqs/README.md
-3. Executar o passo a passo do lambda-sqs-dynamodb/README.md
+![poc_risk](./media/poc_risk.svg)
+
+- DynamoDB Table;
+- SQS Queue;
+- Lambda - Envia mensagem ao SQS foi criada no diretório 'lambda-send-sqs';
+- Lambda Event Source Mapping - obtem eventos da fila sqs para a lambda;
+- Lambda - Escuta e recebe as mensagem do SQS e grava no DynamoDB está no diretório 'lambda-sqs-dynamodb';
+
+Importante: este repositório usa vários serviços da AWS e há custos associados a esses serviços após o uso do nível gratuito - consulte o [AWS Pricing page](https://aws.amazon.com/pricing/) para detalhes. Você é responsável por quaisquer custos da AWS incorridos. Nenhuma garantia está implícita neste exemplo.
+
+## Instruções de implantação
+
+1. Crie um novo diretório, navegue até esse diretório em um terminal e clone o repositório GitHub:
+
+    ```bash
+    git clone https://github.com/Furipe09/poc_risks.git
+    ```
+
+2. Altere o diretório para o diretório padrão:
+
+    ```bash
+    cd poc_risks
+    ```
+
+3. Opcional - Caso ache necessario, as variaveis de entradas de um dos 3 repositórios do terraform, altere nos arquivos abaixo:
+   - poc_risks/backend_infrastructure/infra/terraform.vars
+   - poc_risks/lambda_send_sqs/infra/terraform.vars
+   - poc_risks/lambda_sqs_dynamodb/infra/terraform.vars
+
+4. Na linha de comando, use o Terraform para implantar os recursos da AWS:
+
+    - Implantação dos recursos de infraestrutura - SQS e DynamoDB:
+
+    ```bash
+    terraform -chdir=backend_Infrastructure/infra init
+
+    terraform -chdir=backend_Infrastructure/infra apply -auto-approve
+    ```
+
+    - Implantação da lambda de envio de msgs ao SQS - Lambda:
+
+    ```bash
+    terraform -chdir=lambda_send_sqs/infra init
+
+    terraform -chdir=lambda_send_sqs/infra apply -auto-approve
+    ```
+
+    - Implantação do service map e da lambda de recepção de msgs do SQS e envio ao DynamoDB - Lambda e service map:
+
+    ```bash
+    terraform -chdir=lambda_sqs_dynamodb/infra init
+
+    terraform -chdir=lambda_sqs_dynamodb/infra apply -auto-approve
+    ```
+
+5. Observe as saídas do processo de implantação do Terraform. Estes contêm os nomes de recursos e/ou ARNs que são usados ​​para teste.
+
+## Excluir recursos
+
+1. Excluir a stack - Dentro da pasta infra:
+
+    ```bash
+    terraform -chdir=lambda_sqs_dynamodb/infra destroy -auto-approve
+    
+    terraform -chdir=lambda_send_sqs/infra destroy -auto-approve
+    
+    terraform -chdir=backend_Infrastructure/infra destroy -auto-approve
+    ```

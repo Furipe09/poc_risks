@@ -1,6 +1,6 @@
 # Amazon SQS para AWS Lambda com Terraform
 
-Este repositório contém uma tabela Dynamodb, uma fila SQS, uma fila MQ e security group.
+Este repositório cria uma tabela Dynamodb, uma fila SQS.
 
 Importante: este repositório usa vários serviços da AWS e há custos associados a esses serviços após o uso do nível gratuito - consulte o [AWS Pricing page](https://aws.amazon.com/pricing/) para detalhes. Você é responsável por quaisquer custos da AWS incorridos. Nenhuma garantia está implícita neste exemplo.
 
@@ -15,27 +15,32 @@ Importante: este repositório usa vários serviços da AWS e há custos associad
 ## Instruções de implantação
 
 1. Crie um novo diretório, navegue até esse diretório em um terminal e clone o repositório GitHub:
+
+    ```bash
+    git clone https://github.com/Furipe09/poc_risks.git
     ```
-    git clone https://github.com/????
-    ```
+
 2. Altere o diretório para o diretório padrão:
+
+    ```bash
+    cd poc_risks/backend-infrastructure/infra
     ```
-    cd backend-infrastructure
-    ```
-3. Na linha de comando, use o Terraform para implantar os recursos da AWS para o padrão conforme especificado no arquivo main.tf:
-    ```
+
+3. Opcional - Caso ache necessario, as variaveis de entradas podem ser alteradas no arquivo poc_risks/backend_infrastructure/infra/terraform.vars
+<br>
+4. Na linha de comando, use o Terraform para implantar os recursos da AWS para o padrão conforme especificado nos arquivos dynamodb.tf e sqs.tf:
+
+    ```bash
     terraform init
     terraform apply --auto-approve
     ```
 
-4. Observe as saídas do processo de implantação do Terraform. Estes contêm os nomes de recursos e/ou ARNs que são usados ​​para teste.
+5. Observe as saídas do processo de implantação do Terraform. Estes contêm os nomes de recursos e/ou ARNs que são usados ​​para teste.
 
-```
+## Excluir recursos
 
-## Limpar
+1. Excluir a stack - Dentro da pasta infra:
 
-1. Excluir a stack
     ```bash
     terraform destroy --auto-approve
     ```
-----

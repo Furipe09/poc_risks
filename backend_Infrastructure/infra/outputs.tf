@@ -4,11 +4,10 @@ output "dynamodb_arn" {
   value = aws_dynamodb_table.one[0].arn
 }
 
-#mq
-# output "mq_broker_arn" {
-#   # count = var.create_mq ? 1 : 0
-#   value = aws_mq_broker.one[0].arn
-# }
+output "dynamodb_name" {
+  # count = var.create_dynamodb ? 1 : 0
+  value = aws_dynamodb_table.one[0].name
+}
 
 #sqs
 output "sqs_queue_url" {
@@ -20,3 +19,9 @@ output "sqs_queue_arn" {
   # count = var.create_sqs ? 1 : 0
   value = aws_sqs_queue.sqs_lambda_queue[0].arn
 }
+
+#mq
+# output "mq_broker_arn" {
+#   # count = var.create_mq ? 1 : 0
+#   value = aws_mq_broker.one[0].arn
+# }

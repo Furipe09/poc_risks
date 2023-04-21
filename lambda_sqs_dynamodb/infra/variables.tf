@@ -1,12 +1,28 @@
 variable "dynamodb_table" {
   description = "name of the ddb table"
   type        = string
-  default     = "approvedRisk"
 
 }
 
+variable "function_name" {
+  description = ""
+  type        = string
+}
 variable "SQSqueueArn" {
   description = ""
   type        = string
-  default     = "arn:aws:sqs:us-east-1:222497770433:sqs-lambda-Risk"
+}
+variable "tags" {
+  description = ""
+  type        = map
+}
+
+variable "handler" {
+  description = ""
+  type        = string
+}
+
+variable "runtime" {
+  description = ""
+  type        = string
 }

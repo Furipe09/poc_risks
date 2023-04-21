@@ -93,6 +93,25 @@ variable "range_key" {
   type        = string
   default     = "IdCliente"
 }
+variable "dynamodb_billing_mode" {
+  description = ""
+  type        = string
+}
+
+variable "dynamodb_read_capacity" {
+  description = ""
+  type        = string
+}
+
+variable "dynamodb_write_capacity" {
+  description = ""
+}
+
+variable "tags" {
+  description = ""
+  type        = map
+  default     = {}
+}
 
 # variable "IdProduto" {
 #   description = "Codigo do produto"

@@ -4,26 +4,24 @@ variable "SQSqueueUrl" {
   default     = ""
 }
 
-# variable "brokerid" {
-#   description = ""
-#   type        = string
-#   default     = ""
-# }
-
-# variable "username" {
-#   description = ""
-#   type        = string
-#   default     = ""
-# }
-
-# variable "password" {
-#   description = ""
-#   type        = string
-#   default     = ""
-# }
-
-variable "region" {
+variable "function_name" {
   description = ""
   type        = string
   default     = ""
+}
+
+variable "runtime" {
+  description = ""
+  type        = string
+  default     = ""
+}
+
+variable "handler" {
+  description = ""
+  type        = string
+  default     = ""
+}
+variable "tags" {
+  description = ""
+  type        = map
 }
